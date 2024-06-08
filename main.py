@@ -1,10 +1,10 @@
-from dadosIBGE import dadosIBGE
-from dadosDP import dadosDP
-from dadosResponsavel import dadosResponsavel
-from dadosBPM import dadosBPM
-from dadosAreaBPM import dadosAreaBPM
-from dadosOcorrencia import dadosOcorrencia
-from dadosPeriodo import dadosPeriodo
+from src.dadosIBGE import dadosIBGE
+from src.dadosDP import dadosDP
+from src.dadosResponsavel import dadosResponsavel
+from src.dadosBPM import dadosBPM
+from src.dadosAreaBPM import dadosAreaBPM
+from src.dadosOcorrencia import dadosOcorrencia
+from src.dadosPeriodo import dadosPeriodo
 
 
 dadosIBGE().create_dbODS()
