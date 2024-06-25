@@ -10,6 +10,13 @@ class dadosDP:
         path_data = os.path.join(os.getcwd(), "data", "DP.csv")
         self.tbLogDP = pd.read_csv(path_data)
         self.add_date()
+        self.create_tbLogDP()
+
+    def create_tbLogDP(self):
+        with DBConnectionDPODS() as db:
+            print("Iniciando a criação da tabela tbLogDP.")
+            print("--------------------------------------")
+            db.create()
 
     def add_date(self) -> None:
         # Adiciona uma coluna de data e hora decarga
@@ -23,7 +30,7 @@ class dadosDP:
             print("------------------------------------------------")
             db.insert(self.tbLogDP)
             print(
-                f"Carga Finalizada! {len(self.tbLogDP)} registros inseridos na tbLogDP"
+                f"Carga Finalizada! {len(self.tbLogDP)} registros inseridos na tbLogDP\n"
             )
 
     def create_dbDW(self):
@@ -31,8 +38,9 @@ class dadosDP:
             dDP = db.select()
 
         with DBConnectionDPDW() as db:
+            db.create()
             db.delete()
             print("Iniciando a inserção de dados na tabela dDP.")
-            print("------------------------------------------------")
+            print("--------------------------------------------")
             db.insert(dDP)
-            print(f"Carga Finalizada! {len(dDP)} registros inseridos na dDP")
+            print(f"Carga Finalizada! {len(dDP)} registros inseridos na dDP\n")

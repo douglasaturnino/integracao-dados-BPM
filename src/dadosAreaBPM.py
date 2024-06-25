@@ -9,6 +9,13 @@ class dadosAreaBPM:
         path_data = os.path.join(os.getcwd(), "data", "areaBPM.csv")
         self.tbLogAreaBPM = pd.read_csv(path_data)
         self.add_date()
+        self.create_tbLogAreaBPM()
+
+    def create_tbLogAreaBPM(self):
+        with DBConnectionAreaBPMODS() as db:
+            print("Iniciando a criação da tabela tbLogAreaBPM.")
+            print("--------------------------------------------")
+            db.create()
 
     def add_date(self) -> None:
         # Adiciona uma coluna de data e hora decarga
@@ -19,8 +26,8 @@ class dadosAreaBPM:
         with DBConnectionAreaBPMODS() as db:
             # Inserindo registros na tabela tbLogAreaBPM
             print("Iniciando a inserção de dados na tabela tbLogAreaBPM.")
-            print("----------------------------------------------------")
+            print("-----------------------------------------------------")
             db.insert(self.tbLogAreaBPM)
             print(
-                f"Carga Finalizada! {len(self.tbLogAreaBPM)} registros inseridos na tbLogAreaBPM"
+                f"Carga Finalizada! {len(self.tbLogAreaBPM)} registros inseridos na tbLogAreaBPM\n"
             )

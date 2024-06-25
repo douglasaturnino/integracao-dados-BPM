@@ -3,7 +3,7 @@ import pandas as pd
 
 
 class DBConnectionBPMDW(DBConnectionDW):
-    def select(self):
+    def create(self):
         qry_dBPM = """
             CREATE TABLE IF NOT EXISTS dBPM(
             
@@ -14,7 +14,7 @@ class DBConnectionBPMDW(DBConnectionDW):
             areaBPM REAL (5,2)
         )
         """
-        dBPM = pd.read_sql(qry_dBPM, self.conexao)
+        dBPM = self.conexao.execute(qry_dBPM)
 
         # definição da qry de criação de index idBPM
         dBPM_idBPM_IDX = "CREATE INDEX IF NOT EXISTS dBPM_idBPM_IDX ON dBPM (idBPM)"

@@ -36,6 +36,24 @@ class DBConnectionDPODS(DBConnectionODS):
 
         return dDP
 
+    def create(self):
+        qry_dDP = """
+            CREATE TABLE IF NOT EXISTS tbLogDP(
+            
+            codDP INTEGER,
+            nmDP VARCHAR(100),
+            endereco VARCHAR(200),
+            dtCarga DATETIME
+
+        )
+        """
+        self.conexao.execute(qry_dDP)
+
+        tbLogDP_codDP_IDX = (
+            "CREATE INDEX IF NOT EXISTS tbLogDP_codDP_IDX ON tbLogDP (codDP);"
+        )
+        self.conexao.execute(tbLogDP_codDP_IDX)
+
     def insert(self, tbLogDP):
         self.conexao.executemany(
             """ INSERT INTO tbLogDP (codDP, nmDP, endereco, dtCarga) VALUES (?,?,?,?)""",

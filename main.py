@@ -14,6 +14,7 @@ dadosBPM().create_dbODS()
 dadosAreaBPM().create_dbODS()
 dadosOcorrencia().create_dbODS()
 
+dadosIBGE().create_dbDW()
 dadosDP().create_dbDW()
 dadosBPM().create_dbDW()
 dadosPeriodo().create_dbDW()

@@ -9,6 +9,13 @@ class dadosResponsavel:
         path_data = os.path.join(os.getcwd(), "data", "ResponsavelDP.csv")
         self.tbLogRespDP = pd.read_csv(path_data)
         self.add_date()
+        self.create_tbLogRespDP()
+
+    def create_tbLogRespDP(self):
+        with DBConnectionResponsavelODS() as db:
+            print("Iniciando a criação da tabela tbLogRespDP.")
+            print("------------------------------------------")
+            db.create()
 
     def add_date(self) -> None:
         # Adiciona uma coluna de data e hora decarga
@@ -22,5 +29,5 @@ class dadosResponsavel:
             print("----------------------------------------------------")
             db.insert(self.tbLogRespDP)
             print(
-                f"Carga Finalizada! {len(self.tbLogRespDP)} registros inseridos na tbLogRespDP"
+                f"Carga Finalizada! {len(self.tbLogRespDP)} registros inseridos na tbLogRespDP\n"
             )

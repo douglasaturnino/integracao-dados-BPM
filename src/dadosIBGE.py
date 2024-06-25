@@ -34,7 +34,10 @@ class dadosIBGE:
     def create_dbODS(self):
         with DBConnectionMunicipioODS() as db:
             db.insert(self.dadosIBGE)
-            print("Carga do BDODS concluída!")
+            print("----------------------------------------------------")
+            print(
+                f"Carga Finalizada! {len(self.dadosIBGE )} registros inseridos na tbLogMunic\n"
+            )
 
     def create_dbDW(self):
         # Selecionar somente as colunas para criação da dMunicipio
@@ -42,7 +45,9 @@ class dadosIBGE:
 
         with DBConnectionMunicipioDW() as db:
             db.insert(dadosIBGE)
-            print("Carga do BDDW concluída!")
+            print(
+                f"Carga Finalizada! {len(self.dadosIBGE )} registros inseridos na dMunicipio\n"
+            )
 
     def run(self):
         self.add_date()

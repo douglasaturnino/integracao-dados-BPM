@@ -5,13 +5,12 @@ import pandas as pd
 class DBConnectionBPMODS(DBConnectionODS):
     def create(self):
         qry_dBPM = """
-            CREATE TABLE IF NOT EXISTS dBPM(
+            CREATE TABLE IF NOT EXISTS tbLogBPM(
             
-            idBPM INTEGER PRIMARY KEY AUTOINCREMENT,
             codBPM INTEGER,
             nmBPM VARCHAR (7),
             enderecoBPM VARCHAR (200),
-            areaBPM REAL (5,2)
+            dtCarga DATETIME
         )
         """
         self.conexao.execute(qry_dBPM)

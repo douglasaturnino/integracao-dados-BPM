@@ -4,6 +4,7 @@ from repository.periodoDWRepository import DBConnectionPeriodoDW
 class dadosPeriodo:
     def create_dbDW(self):
         with DBConnectionPeriodoDW() as db:
+            db.create()
             dPeriodo = db.select()
             db.delete()
             print("Iniciando a inserção de dados na tabela dPeriodo.")

@@ -5,7 +5,7 @@ class DBConnectionDPDW(DBConnectionDW):
     def create(self):
         qry_dDP = """
             CREATE TABLE IF NOT EXISTS dDP (
-            idDP INTEGER PRIMARY KEY AUTOINCREMENT
+            idDP INTEGER PRIMARY KEY AUTOINCREMENT,
             codDP INTEGER,
             nmDP VARCHAR (100),
             endereco VARCHAR (200),
@@ -14,7 +14,7 @@ class DBConnectionDPDW(DBConnectionDW):
             )
         """
         self.conexao.execute(qry_dDP)
-        dDP_codDP_IDX = "CREATE INDEX dDP_codDP_IDX ON dDP (codDP)"
+        dDP_codDP_IDX = "CREATE INDEX IF NOT EXISTS dDP_codDP_IDX ON dDP (codDP)"
         self.conexao.execute(dDP_codDP_IDX)
 
     def insert(self, dDP):
